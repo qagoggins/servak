@@ -1,16 +1,14 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["db.json"]
+    "functions": {
+      "api/server.js": {
+        "memory": 1024,
+        "includeFiles": "db.json"
       }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)"
-    }
-  ]
-}
+    },
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "api/server.js"
+      }
+    ]
+  }
